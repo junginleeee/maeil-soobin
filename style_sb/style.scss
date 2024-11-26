@@ -1,0 +1,99 @@
+/* 기본 설정 */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffdd00; /* 노란 배경 */
+    overflow: hidden;
+}
+
+/* 그리드 설정 */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 한 줄에 7개 */
+    grid-template-rows: repeat(4, 1fr); /* 총 4줄 */
+    gap: 0; /* 원 사이의 간격을 없앰 */
+    width: 100vw; /* 화면 가로 전체 채우기 */
+    height: 100vh; /* 화면 세로 전체 채우기 */
+    box-sizing: border-box;
+}
+
+/* 원 스타일 */
+.circle {
+    width: 100%; /* 각 원의 가로 크기 */
+    height: 100%; /* 각 원의 세로 크기 */
+    background-color: #ff7300; /* 주황색 */
+    border-radius: 50%;
+    animation: spin 10s linear infinite; /* 계속 회전 */
+    box-sizing: border-box;
+    border: 0px solid #ffdd00; /* 원 간 경계 맞추기 */
+}
+
+/* 원 회전 애니메이션 */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* 하트 애니메이션 */
+.heart {
+    position: absolute;
+    width: 8vw;
+    height: 8vw;
+    animation: floatUp 2s ease-out forwards;
+    z-index: 10; /* 다른 요소 위로 올리기 */
+    transform-origin: center center;
+}
+
+/* 하트 위로 올라가며 사라지기 */
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20vh) scale(1.5);
+    }
+}
+
+/* SVG 스타일 */
+.svg {
+    position: absolute;
+    width: 80vh; /* 반응형 크기 */
+    height: auto; /* 비율 유지 */
+    opacity: 0; /* 초기 숨김 상태 */
+    transform: scale(0.8); /* 초기 크기 축소 */
+    transition: opacity 1.5s ease, transform 1.5s ease;
+    left: 50%; /* 화면 가로 중앙 정렬 */
+    transform: translate(-50%, -50%) scale(0.8); /* 전체 중앙 정렬 */
+    z-index: 10; /* 원 위에 나타나도록 설정 */
+}
+
+/* 위쪽 SVG */
+.top-svg {
+    top: 10%; /* 화면 상단에서 간격 */
+    left: 50%;
+    transform: translateX(-50%) scale(0.8); /* 중앙 정렬 */
+}
+
+/* 아래쪽 SVG */
+.bottom-svg {
+    bottom: 5%; /* 화면 하단에서 간격 */
+    left: 50%;
+    width: 100vh;
+    transform: translateX(-50%) scale(0.8); /* 중앙 정렬 */
+}
+
+/* SVG 표시 애니메이션 */
+.svg.visible {
+    opacity: 1; /* 완전 표시 */
+    transform: translate(-50%, -50%) scale(1);
+}
