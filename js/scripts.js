@@ -21,10 +21,10 @@ let clickCount = 0;
 document.body.addEventListener('click', () => {
     clickCount++;
 
-    if (clickCount === 1) {
+    if (clickCount === 2) {
         // 첫 클릭: 위쪽 SVG 나타남
         document.querySelector('.top-svg').classList.add('visible');
-    } else if (clickCount === 2) {
+    } else if (clickCount === 6) {
         // 두 번째 클릭: 아래쪽 SVG 나타남
         document.querySelector('.bottom-svg').classList.add('visible');
     }
